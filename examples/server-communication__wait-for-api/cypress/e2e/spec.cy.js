@@ -24,24 +24,31 @@ describe("waits for API", () => {
           failOnStatusCode: false,
         });
       },
-      // version 1
-      (res) => {
-        if (res.isOkStatusCode) {
-          cy.wrap(res).should(
-            spok({
-              body: "Hello!",
-              status: 200,
-              isOkStatusCode: true,
-            })
-          );
+      // Predicate function can throw to signal an error. spok({...}) returns a ... predicate function that throws
+      spok({
+        body: "Hello!",
+        status: 200,
+        isOkStatusCode: true,
+      }),
 
-          return true;
-        }
+      // version 2 (meh)
+      // (res) => {
+      //   if (res.isOkStatusCode) {
+      //     cy.wrap(res).should(
+      //       spok({
+      //         body: "Hello!",
+      //         status: 200,
+      //         isOkStatusCode: true,
+      //       })
+      //     );
 
-        return false;
-      },
+      //     return true;
+      //   }
 
-      // version 2
+      //   return false;
+      // },
+
+      // version 3: res => spok(...)(res) is just spok
       // (res) => {
       //   // Instead of letting spok fail immediately, capture its result
       //   try {
