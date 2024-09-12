@@ -1,0 +1,11 @@
+{
+  "git.ignoreLimitWarning": true,
+  "eslint.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "standard.enable": false,
+  "editor.formatOnSave": true,
+  "workbench.colorCustomizations": {},
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  }
+}
