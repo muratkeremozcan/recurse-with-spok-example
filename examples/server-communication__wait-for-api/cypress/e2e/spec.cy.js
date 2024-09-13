@@ -18,13 +18,13 @@ describe("waits for API", () => {
     // https://github.com/bahmutov/cypress-recurse
 
     recurse(
-      () => {
-        return cy.request({
+      () =>
+        cy.request({
           url: "/greeting",
           failOnStatusCode: false,
-        });
-      },
-      // Predicate function can throw to signal an error. spok({...}) returns a ... predicate function that throws
+        }),
+      // Predicate function can throw to signal an error.
+      // spok({...}) returns a predicate function that throws
       spok({
         body: "Hello!",
         status: 200,
